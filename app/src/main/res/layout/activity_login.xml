@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@drawable/signin">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRegister"
+        android:layout_marginTop="150dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:cardCornerRadius="30dp"
+        android:layout_marginLeft="250dp">
+
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Register"
+            android:textStyle="italic"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvUsername"
+        android:layout_marginTop="250dp"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        app:cardCornerRadius="30dp"
+        app:cardBackgroundColor="@color/biru">
+
+
+        <EditText
+            style="@style/EditTextNoUnderline"
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Username"
+            android:fontFamily="@font/firasans"
+            android:textColorHint="@color/white"
+            android:drawableStart="@drawable/baseline_person_pin_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvPassword"
+        android:layout_marginTop="25dp"
+        app:cardBackgroundColor="@color/abu"
+        android:layout_below="@+id/cvUsername"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        app:cardCornerRadius="30dp">
+
+        <EditText
+            style="@style/EditTextNoUnderline"
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"
+            android:textColorHint="@color/white"
+            android:fontFamily="@font/firasans"
+            android:inputType="textPassword"
+            android:drawableStart="@drawable/baseline_remove_red_eye_24"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:backgroundTint="@color/abu2"
+        android:layout_below="@id/cvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

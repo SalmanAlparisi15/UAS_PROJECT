@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.profil.ProfilFragment"
+    android:background="@drawable/user">
+
+    <TextView
+        android:id="@+id/text_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Username"
+        android:textStyle="italic"
+        android:textColorHint="@color/white"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="25sp"
+        android:textColor="@color/white"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="127dp"
+        android:layout_height="127dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="110dp"
+        app:cardCornerRadius="60dp"
+        app:cardBackgroundColor="@color/abuprofil">
+
+    <ImageView
+        android:id="@+id/ivProfil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvfotoProfil"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Photo Profil"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/firasans"
+        android:drawableStart="@drawable/baseline_camera_alt_24"
+        android:padding="14dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="250dp"
+        android:background="@color/hijau"/>
+    <TextView
+        android:id="@+id/tvstatusProfil"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:drawableStart="@drawable/baseline_admin_panel_settings_24"
+        android:padding="14dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:background="@color/hijau"/>
+
+    <TextView
+        android:id="@+id/tvupdateProfil"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:text="Update Profil"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/firasans"
+        android:drawableStart="@drawable/baseline_update_24"
+        android:padding="14dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="80dp"
+        android:background="@color/hijau"/>
+
+    <TextView
+        android:id="@+id/tvkeluarProfil"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:text="Logout"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:fontFamily="@font/firasans"
+        android:drawableStart="@drawable/baseline_logout_24"
+        android:padding="14dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="160dp"
+        android:background="@color/hijau"/>
+
+    <TextView
+        android:id="@+id/tvhapusProfil"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:text="Hapus Akun"
+        android:textSize="25sp"
+        android:textColor="@color/merah"
+        android:textAlignment="center"
+        android:fontFamily="@font/firasans"
+        android:drawableStart="@drawable/baseline_warning_amber_24"
+        android:padding="14dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginTop="240dp"
+        android:background="@color/hijau"/>
+
+</FrameLayout>

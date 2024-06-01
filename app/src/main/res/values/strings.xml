@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UASTS</string>
+    <string name="title_home">Home</string>
+    <string name="title_transfers">Transfers</string>
+    <string name="title_rumour">Rumour</string>
+    <string name="title_standings">Standings</string>
+    <string name="title_profil">Profil</string>
+
+</resources>
