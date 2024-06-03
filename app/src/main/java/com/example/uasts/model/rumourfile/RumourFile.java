@@ -1,14 +1,26 @@
-package com.example.uasts.model.update;
+package com.example.uasts.model.rumourfile;
 
+import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Update {
+public class RumourFile{
+
+	@SerializedName("data")
+	private List<RumourFileData> data;
 
 	@SerializedName("message")
 	private String message;
 
 	@SerializedName("status")
 	private boolean status;
+
+	public void setData(List<RumourFileData> data){
+		this.data = data;
+	}
+
+	public List<RumourFileData> getData(){
+		return data;
+	}
 
 	public void setMessage(String message){
 		this.message = message;

@@ -37,6 +37,7 @@
         android:id="@+id/tvfotoProfil"
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:layout_gravity="center"
         android:text="Photo Profil"
         android:textSize="25sp"
         android:textColor="@color/black"
@@ -46,8 +47,9 @@
         android:padding="14dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginBottom="22dp"
         android:background="@color/hijau"/>
+
     <TextView
         android:id="@+id/tvstatusProfil"
         android:layout_width="match_parent"
@@ -60,23 +62,7 @@
         android:padding="14dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
-        android:background="@color/hijau"/>
-
-    <TextView
-        android:id="@+id/tvupdateProfil"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:text="Update Profil"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:fontFamily="@font/firasans"
-        android:drawableStart="@drawable/baseline_update_24"
-        android:padding="14dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
         android:background="@color/hijau"/>
 
     <TextView
@@ -93,13 +79,13 @@
         android:padding="14dp"
         android:layout_marginLeft="28dp"
         android:layout_marginRight="28dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="140dp"
         android:background="@color/hijau"/>
 
     <TextView
         android:id="@+id/tvhapusProfil"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:text="Hapus Akun"
         android:textSize="25sp"
@@ -107,10 +93,10 @@
         android:textAlignment="center"
         android:fontFamily="@font/firasans"
         android:drawableStart="@drawable/baseline_warning_amber_24"
-        android:padding="14dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginTop="240dp"
-        android:background="@color/hijau"/>
+        android:padding="6dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginTop="290dp"
+        android:background="@color/abuprofil"/>
 
 </FrameLayout>

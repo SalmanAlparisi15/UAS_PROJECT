@@ -5,11 +5,16 @@ import com.example.uasts.model.delete.Delete;
 import com.example.uasts.model.login.Login;
 import com.example.uasts.model.logout.Logout;
 import com.example.uasts.model.register.Register;
-import com.example.uasts.model.update.Update;
+import com.example.uasts.model.rumourfile.RumourFile;
+import com.example.uasts.model.transferfile.TransferFile;
+import com.example.uasts.model.transferfile.TransferFileData;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiInterface {
@@ -36,14 +41,6 @@ public interface ApiInterface {
 
     );
 
-    @FormUrlEncoded
-    @POST("update.php")
-    Call<Update> updateResponse(
-            @Field("currentUsername") String currentUsername,
-            @Field("username") String Newusername,
-            @Field("name") String name,
-            @Field("password") String password
-    );
 
     @FormUrlEncoded
     @POST("logout.php")
@@ -51,4 +48,11 @@ public interface ApiInterface {
             @Field("username") String username
     );
 
+    @GET("transfer.php")
+    Call<TransferFile> getTransferFile(
+
+    );
+
+    @GET("rumour.php")
+    Call<RumourFile> getRumourFile();
 }

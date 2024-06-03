@@ -48,7 +48,6 @@ public class SessionManager {
         editor.commit();
     }
 
-
     public void LogoutSession() {
         editor.clear();
         editor.commit();
@@ -57,4 +56,5 @@ public class SessionManager {
     public boolean IsLoggedIn() {
         return sharedPreferences.getBoolean(IS_LOGGED_IN, false);
     }
+
 }

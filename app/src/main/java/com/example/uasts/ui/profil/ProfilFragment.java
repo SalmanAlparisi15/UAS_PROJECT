@@ -1,13 +1,16 @@
 package com.example.uasts.ui.profil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.uasts.LoginActivity;
@@ -28,6 +31,7 @@ public class ProfilFragment extends Fragment {
 
 
     private FragmentProfilBinding binding;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class ProfilFragment extends Fragment {
             }
         });
 
+
         return root;
     }
 
@@ -69,6 +74,8 @@ public class ProfilFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
 
     private void hapusAkun(String username){
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
@@ -120,5 +127,7 @@ public class ProfilFragment extends Fragment {
 
             }
         });
+
     }
+
 }
