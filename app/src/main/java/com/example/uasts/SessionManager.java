@@ -1,10 +1,13 @@
 package com.example.uasts;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.example.uasts.model.login.LoginData;
+import com.example.uasts.model.rumourfile.RumourFileData;
+import com.example.uasts.model.transferfile.TransferFileData;
 
 import java.util.HashMap;
 
@@ -42,10 +45,11 @@ public class SessionManager {
         user.put(IS_ADMIN, String.valueOf(sharedPreferences.getBoolean(IS_ADMIN, false)));
         return user;
     }
-    public void setIsAdmin(boolean isAdmin) {
+
+    public void setAdmin(boolean isAdmin) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean(IS_ADMIN, isAdmin);
-        editor.commit();
+        editor.apply();
     }
 
     public void LogoutSession() {

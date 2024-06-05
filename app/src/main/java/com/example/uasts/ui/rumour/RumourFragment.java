@@ -11,7 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.uasts.RumourAdapter;
+import com.example.uasts.SessionManager;
+import com.example.uasts.others.adapter.RumourAdapter;
 import com.example.uasts.api.ApiClient;
 import com.example.uasts.api.ApiInterface;
 import com.example.uasts.model.rumourfile.RumourFile;
@@ -29,6 +30,7 @@ public class RumourFragment extends Fragment {
     private FragmentRumourBinding binding;
     private RecyclerView recyclerView;
     private RumourAdapter rumourAdapter;
+    private SessionManager sessionManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -38,12 +40,14 @@ public class RumourFragment extends Fragment {
         recyclerView = binding.rvRumuor;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fetchTransfers();
+        sessionManager = new SessionManager(getContext());
+
+        fetchRumours();
 
         return root;
     }
 
-    private void fetchTransfers() {
+    private void fetchRumours() {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<RumourFile> call = apiInterface.getRumourFile();
         call.enqueue(new Callback<RumourFile>() {

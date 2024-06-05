@@ -85,13 +85,9 @@ public class ProfilFragment extends Fragment {
             public void onResponse(Call<Delete> call, Response<Delete> response) {
                 if (response.body() != null && response.body().isStatus()) {
                     Toast.makeText(getActivity(), "Akun Anda Telah Dihapus", Toast.LENGTH_SHORT).show();
-                    SessionManager sessionManager = new SessionManager(getActivity());
-                    sessionManager.LogoutSession();
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                     getActivity().finish();
-
-
                 }else {
                     Toast.makeText(getActivity(), "Gagal Menghapus Akun", Toast.LENGTH_SHORT).show();
                 }

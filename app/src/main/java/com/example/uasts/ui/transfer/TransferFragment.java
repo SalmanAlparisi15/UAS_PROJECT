@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.uasts.TransferAdapter;
+import com.example.uasts.others.adapter.TransferAdapter;
 import com.example.uasts.api.ApiClient;
 import com.example.uasts.api.ApiInterface;
 import com.example.uasts.model.transferfile.TransferFile;
@@ -64,7 +64,9 @@ public class TransferFragment extends Fragment {
                 showErrorToast("Network error. Please check your connection.");
             }
         });
+        
     }
+
 
 
     private void showErrorToast(String message) {

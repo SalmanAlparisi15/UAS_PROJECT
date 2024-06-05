@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (response.body() != null && response.isSuccessful() && response.body().isStatus()) {
                     LoginData loginData = response.body().getLoginData();
                     sessionManager.createLoginSession(loginData);
-                    sessionManager.setIsAdmin(loginData.isIsAdmin());
+                    sessionManager.setAdmin(loginData.isIsAdmin());
                     Toast.makeText(LoginActivity.this, response.body().getLoginData().getName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
