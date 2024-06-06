@@ -5,18 +5,28 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.uasts.DetailRumour;
 import com.example.uasts.R;
+import com.example.uasts.api.ApiClient;
+import com.example.uasts.api.ApiInterface;
+import com.example.uasts.model.deleterumour.DeleteRumour;
 import com.example.uasts.model.rumourfile.RumourFileData;
 import com.example.uasts.others.temporary.TemporaryRumour;
 
 import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder> {
 
@@ -53,6 +63,40 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
             temporaryRumour.setRumourData(rumour.getRumourplayerName(), rumour.getRumourplayerPhoto(), rumour.getRumourplayerPosition(), rumour.getRumourPrice());
             context.startActivity(intent);
         });
+
+        holder.deleteButton.setOnClickListener(view ->{
+            deleteRumour(rumour.getId(),position);
+        });
+    }
+
+    private void deleteRumour(int id, int position) {
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<DeleteRumour> call = apiInterface.deleteRumour(id);
+        call.enqueue(new Callback<DeleteRumour>() {
+            @Override
+            public void onResponse(Call<DeleteRumour> call, Response<DeleteRumour> response) {
+                if (response.isSuccessful() && response.body() !=null) {
+                    DeleteRumour DeleteResponse = response.body();
+
+                    if (DeleteResponse.isStatus()) {
+                        rumourList.remove(position);
+                        notifyItemRemoved(position);
+                        notifyItemRangeChanged(position, rumourList.size());
+                        Toast.makeText(context, "Delete successful", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context, "Failed to delete" + DeleteResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(context, "Failed to delete. Please try again.", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<DeleteRumour> call, Throwable t) {
+
+            }
+        });
     }
 
     @Override
@@ -63,6 +107,7 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView playerName, clubName;
         public ImageView playerPhoto, clubPhoto;
+        public ImageButton deleteButton;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -70,6 +115,7 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
             clubName = itemView.findViewById(R.id.tvnamaTeam);
             playerPhoto = itemView.findViewById(R.id.ivPemain);
             clubPhoto = itemView.findViewById(R.id.ivClub);
+            deleteButton = itemView.findViewById(R.id.ibDelete);
         }
     }
 }

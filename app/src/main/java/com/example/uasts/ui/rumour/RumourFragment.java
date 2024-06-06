@@ -40,6 +40,7 @@ public class RumourFragment extends Fragment {
         recyclerView = binding.rvRumuor;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         sessionManager = new SessionManager(getContext());
 
         fetchRumours();

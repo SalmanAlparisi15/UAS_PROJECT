@@ -1,8 +1,8 @@
-package com.example.uasts.model.rumourrequest;
+package com.example.uasts.model.deleterumour;
 
 import com.google.gson.annotations.SerializedName;
 
-public class RumourRequest{
+public class DeleteRumour{
 
 	@SerializedName("message")
 	private String message;

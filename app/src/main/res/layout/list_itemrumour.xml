@@ -80,4 +80,12 @@
         android:layout_marginTop="2dp"
         android:layout_marginLeft="268dp" />
 
+    <ImageButton
+        android:id="@+id/ibDelete"
+        android:backgroundTint="@color/merah"
+        android:src="@drawable/baseline_delete_24"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center|bottom"/>
+
 </androidx.cardview.widget.CardView>

@@ -2,18 +2,16 @@ package com.example.uasts.api;
 
 
 import com.example.uasts.model.delete.Delete;
+import com.example.uasts.model.deleterumour.DeleteRumour;
 import com.example.uasts.model.login.Login;
 import com.example.uasts.model.logout.Logout;
 import com.example.uasts.model.register.Register;
 import com.example.uasts.model.rumourfile.RumourFile;
-import com.example.uasts.model.rumourrequest.RumourRequest;
 import com.example.uasts.model.transferfile.TransferFile;
-import com.example.uasts.model.transferfile.TransferFileData;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -60,7 +58,11 @@ public interface ApiInterface {
 
     );
 
-    @POST("rumour.php")
-    Call<RumourRequest> addRumourTransfer(@Body RumourFile request);
+    @FormUrlEncoded
+    @POST("deleterumour.php")
+    Call<DeleteRumour> deleteRumour(
+            @Field("id") int id
+    );
+
 
 }
