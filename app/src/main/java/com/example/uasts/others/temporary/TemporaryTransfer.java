@@ -11,17 +11,19 @@ public class TemporaryTransfer {
     private static final String PLAYER_PHOTO = "player_photo";
     private static final String PLAYER_POSITION = "player_position";
     private static final String PLAYER_PRICE = "player_price";
+    private static final String CLUB_PHOTO = "club_photo";
 
     public TemporaryTransfer(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPreferences.edit();
     }
 
-    public void setTransferData(String playerName, String playerPhoto, String playerPosition, String playerPrice) {
+    public void setTransferData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String clubPhoto) {
         editor.putString(PLAYER_NAME, playerName);
         editor.putString(PLAYER_PHOTO, playerPhoto);
         editor.putString(PLAYER_POSITION, playerPosition);
         editor.putString(PLAYER_PRICE, playerPrice);
+        editor.putString(CLUB_PHOTO, clubPhoto);
         editor.apply();
     }
 

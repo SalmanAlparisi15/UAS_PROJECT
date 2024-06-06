@@ -57,6 +57,10 @@ public class SessionManager {
         editor.commit();
     }
 
+    public boolean isAdmin() {
+        return sharedPreferences.getBoolean(IS_ADMIN, false);
+    }
+
     public boolean IsLoggedIn() {
         return sharedPreferences.getBoolean(IS_LOGGED_IN, false);
     }

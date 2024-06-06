@@ -50,7 +50,7 @@ public class TransferAdapter extends RecyclerView.Adapter<TransferAdapter.ViewHo
         Glide.with(context).load(transfer.getClubPhoto()).into(holder.clubPhoto);
         holder.itemView.setOnClickListener(v-> {
             Intent intent = new Intent(context, DetailTransfer.class);
-            temporaryTransfer.setTransferData(transfer.getPlayerName(), transfer.getPlayerPhoto(), transfer.getPlayerPositions(), transfer.getTransferPrice());
+            temporaryTransfer.setTransferData(transfer.getPlayerName(), transfer.getPlayerPhoto(), transfer.getPlayerPositions(), transfer.getTransferPrice(), transfer.getClubPhoto());
             context.startActivity(intent);
 
         });

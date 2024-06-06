@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uasts.R;
 import com.example.uasts.SessionManager;
 import com.example.uasts.others.adapter.RumourAdapter;
 import com.example.uasts.api.ApiClient;
@@ -31,6 +34,7 @@ public class RumourFragment extends Fragment {
     private RecyclerView recyclerView;
     private RumourAdapter rumourAdapter;
     private SessionManager sessionManager;
+    private ImageView ibCreate;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -40,8 +44,21 @@ public class RumourFragment extends Fragment {
         recyclerView = binding.rvRumuor;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         sessionManager = new SessionManager(getContext());
+        ibCreate = binding.ibCreate;
+
+        if(!sessionManager.isAdmin()){
+            ibCreate.setVisibility(View.GONE);
+
+        }else {
+            ibCreate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+        }
+
 
         fetchRumours();
 

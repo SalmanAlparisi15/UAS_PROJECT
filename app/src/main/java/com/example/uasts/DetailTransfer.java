@@ -11,7 +11,7 @@ import com.example.uasts.others.temporary.TemporaryTransfer;
 
 public class DetailTransfer extends AppCompatActivity {
     TextView tvpemainDetail, tvPrice, tvPosition;
-    ImageView ivDetail;
+    ImageView ivDetail, ivClub;
     private TemporaryTransfer temporaryTransfer;
 
 
@@ -25,6 +25,7 @@ public class DetailTransfer extends AppCompatActivity {
         tvPosition = findViewById(R.id.tvPosition);
         tvPrice = findViewById(R.id.tvPrice);
         ivDetail = findViewById(R.id.ivDetail);
+
 
         temporaryTransfer = new TemporaryTransfer(this);
         String playerName = temporaryTransfer.getPlayerName();
