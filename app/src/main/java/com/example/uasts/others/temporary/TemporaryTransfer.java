@@ -42,4 +42,8 @@ public class TemporaryTransfer {
     public String getPlayerPrice() {
         return sharedPreferences.getString(PLAYER_PRICE, "");
     }
+    public String getClubPhoto() {
+        return sharedPreferences.getString(CLUB_PHOTO, "");
+    }
+
 }

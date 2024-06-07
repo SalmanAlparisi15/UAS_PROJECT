@@ -13,6 +13,9 @@ public class RumourFileData {
 	@SerializedName("rumourplayer_photo")
 	private String rumourplayerPhoto;
 
+	@SerializedName("fromclub")
+	private String fromclub;
+
 	@SerializedName("rumourclub_name")
 	private String rumourclubName;
 
@@ -47,6 +50,14 @@ public class RumourFileData {
 
 	public String getRumourplayerPhoto(){
 		return rumourplayerPhoto;
+	}
+
+	public void setFromclub(String fromclub){
+		this.fromclub = fromclub;
+	}
+
+	public String getFromclub(){
+		return fromclub;
 	}
 
 	public void setRumourclubName(String rumourclubName){

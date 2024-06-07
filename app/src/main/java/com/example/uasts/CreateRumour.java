@@ -1,24 +1,33 @@
 package com.example.uasts;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class CreateRumour extends AppCompatActivity {
+    EditText etNama, etClub, etPosisi;
+    ImageButton ibPlayer, ibfromClub, ibtoClub;
+    ImageView ivDone;
+    Uri playerPhotoUri, fromClubPhotoUri, toClubPhotoUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_createrumour);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        etNama = findViewById(R.id.etNama);
+        etClub = findViewById(R.id.etClub);
+        etPosisi = findViewById(R.id.etPosisi);
+        ibPlayer = findViewById(R.id.ibPlayer);
+        ibfromClub = findViewById(R.id.ibfromClub);
+        ibtoClub = findViewById(R.id.ibtoClub);
+        ivDone = findViewById(R.id.ivDone);
+
+
     }
 }

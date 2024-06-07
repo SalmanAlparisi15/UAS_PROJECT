@@ -11,17 +11,19 @@ public class TemporaryRumour{
     private static final String PLAYER_PHOTO = "player_photo";
     private static final String PLAYER_POSITION = "player_position";
     private static final String PLAYER_PRICE = "player_price";
+    private static final String FROM_CLUB = "fromclub";
 
     public TemporaryRumour(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPreferences.edit();
     }
 
-    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice) {
+    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String fromClub) {
         editor.putString(PLAYER_NAME, playerName);
         editor.putString(PLAYER_PHOTO, playerPhoto);
         editor.putString(PLAYER_POSITION, playerPosition);
         editor.putString(PLAYER_PRICE, playerPrice);
+        editor.putString(FROM_CLUB, fromClub);
         editor.apply();
     }
 
@@ -40,4 +42,8 @@ public class TemporaryRumour{
     public String getPlayerPrice() {
         return sharedPreferences.getString(PLAYER_PRICE, "");
     }
+    public String getFromClub() {
+        return sharedPreferences.getString(FROM_CLUB, "");
+    }
+
 }

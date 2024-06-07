@@ -24,6 +24,7 @@ public class DetailTransfer extends AppCompatActivity {
         tvpemainDetail = findViewById(R.id.tvpemainDetail);
         tvPosition = findViewById(R.id.tvPosition);
         tvPrice = findViewById(R.id.tvPrice);
+        ivClub = findViewById(R.id.ivClub);
         ivDetail = findViewById(R.id.ivDetail);
 
 
@@ -32,10 +33,12 @@ public class DetailTransfer extends AppCompatActivity {
         String playerPhoto = temporaryTransfer.getPlayerPhoto();
         String playerPosition = temporaryTransfer.getPlayerPosition();
         String transferprice = temporaryTransfer.getPlayerPrice();
+        String clubPhoto = temporaryTransfer.getClubPhoto();
 
         tvpemainDetail.setText(playerName);
         tvPosition.setText(playerPosition);
         tvPrice.setText(transferprice);
+        Glide.with(this).load(clubPhoto).into(ivClub);
         Glide.with(this).load(playerPhoto).into(ivDetail);
 
     }

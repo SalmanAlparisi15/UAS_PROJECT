@@ -1,5 +1,6 @@
 package com.example.uasts.ui.rumour;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uasts.CreateRumour;
 import com.example.uasts.R;
 import com.example.uasts.SessionManager;
 import com.example.uasts.others.adapter.RumourAdapter;
@@ -47,17 +49,20 @@ public class RumourFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         ibCreate = binding.ibCreate;
 
-        if(!sessionManager.isAdmin()){
+        if (!sessionManager.isAdmin()) {
             ibCreate.setVisibility(View.GONE);
 
-        }else {
+        } else {
             ibCreate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(getActivity(), CreateRumour.class);
+                    startActivity(intent);
                 }
             });
+
         }
+
 
 
         fetchRumours();

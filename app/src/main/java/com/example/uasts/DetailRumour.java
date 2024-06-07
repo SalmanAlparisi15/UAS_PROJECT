@@ -12,7 +12,7 @@ import com.example.uasts.others.temporary.TemporaryRumour;
 public class DetailRumour extends AppCompatActivity {
 
     TextView tvPosition, tvpemainDetail, tvPrice;
-    ImageView ivDetail;
+    ImageView ivDetail, ivfromClub;
     TemporaryRumour temporaryRumour;
 
     @Override
@@ -23,6 +23,7 @@ public class DetailRumour extends AppCompatActivity {
         tvPosition = findViewById(R.id.tvPosition);
         tvpemainDetail = findViewById(R.id.tvpemainDetail);
         tvPrice = findViewById(R.id.tvPrice);
+        ivfromClub = findViewById(R.id.ivfromClub);
         ivDetail = findViewById(R.id.ivDetail);
 
         temporaryRumour = new TemporaryRumour(this);
@@ -30,11 +31,13 @@ public class DetailRumour extends AppCompatActivity {
         String playerPhoto = temporaryRumour.getPlayerPhoto();
         String playerPosition = temporaryRumour.getPlayerPosition();
         String transferprice = temporaryRumour.getPlayerPrice();
+        String fromclubplayer = temporaryRumour.getFromClub();
 
         tvpemainDetail.setText(playerName);
         tvPosition.setText(playerPosition);
         tvPrice.setText(transferprice);
         Glide.with(this).load(playerPhoto).into(ivDetail);
+        Glide.with(this).load(fromclubplayer).into(ivfromClub);
 
     }
 }
