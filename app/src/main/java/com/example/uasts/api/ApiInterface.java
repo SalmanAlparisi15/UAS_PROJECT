@@ -73,12 +73,12 @@ public interface ApiInterface {
     @POST("postrumour.php")
     Call<PostRumour> postRumour(
             @Part("player_name") RequestBody playername,
-            MultipartBody.Part playerphoto,
+            @Part MultipartBody.Part playerphoto,
             @Part("player_position") RequestBody playerposition,
             @Part("club_name") RequestBody clubname,
-            MultipartBody.Part clubphoto,
-            @Part("price") RequestBody price,
-            MultipartBody.Part fromclub
+            @Part MultipartBody.Part clubphoto,
+            @Part("rumour_price") RequestBody price,
+            @Part MultipartBody.Part fromclub
 
     );
 
