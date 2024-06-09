@@ -60,7 +60,16 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailRumour.class);
-            temporaryRumour.setRumourData(rumour.getRumourplayerName(), rumour.getRumourplayerPhoto(), rumour.getRumourplayerPosition(), rumour.getRumourPrice(), rumour.getFromclub());
+            TemporaryRumour temporaryRumour = new TemporaryRumour(context);
+            temporaryRumour.setRumourData(
+                    rumour.getRumourplayerName(),
+                    rumour.getRumourplayerPhoto(),
+                    rumour.getRumourplayerPosition(),
+                    rumour.getRumourPrice(),
+                    rumour.getFromclub(),
+                    rumour.getDescription(),
+                    rumour.getFromclubname()
+            );
             context.startActivity(intent);
         });
 

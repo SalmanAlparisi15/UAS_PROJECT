@@ -78,7 +78,9 @@ public interface ApiInterface {
             @Part("club_name") RequestBody clubname,
             @Part MultipartBody.Part clubphoto,
             @Part("rumour_price") RequestBody price,
-            @Part MultipartBody.Part fromclub
+            @Part MultipartBody.Part fromclub,
+            @Part("fromclubname") RequestBody fromclubname,
+            @Part("description") RequestBody description
 
     );
 
