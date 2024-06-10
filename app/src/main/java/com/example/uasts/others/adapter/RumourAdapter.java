@@ -56,7 +56,7 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
         holder.playerName.setText(rumour.getRumourplayerName());
         holder.clubName.setText(rumour.getRumourclubName());
         Glide.with(context).load(rumour.getRumourplayerPhoto()).into(holder.playerPhoto);
-        Glide.with(context).load(rumour.getRumourclubPhoto()).into(holder.clubPhoto);
+        Glide.with(context).load(rumour.getFromclub()).into(holder.clubPhoto);
 
         holder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailRumour.class);
@@ -68,8 +68,11 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
                     rumour.getRumourPrice(),
                     rumour.getFromclub(),
                     rumour.getDescription(),
-                    rumour.getFromclubname()
+                    rumour.getFromclubname(),
+                    rumour.getRumourclubName(),
+                    rumour.getRumourclubPhoto()
             );
+            intent.putExtra("rumour_id", rumour.getId());
             context.startActivity(intent);
         });
 

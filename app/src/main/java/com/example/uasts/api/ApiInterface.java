@@ -1,6 +1,7 @@
 package com.example.uasts.api;
 
 
+import com.example.uasts.RumourUpdate;
 import com.example.uasts.model.delete.Delete;
 import com.example.uasts.model.deleterumour.DeleteRumour;
 import com.example.uasts.model.login.Login;
@@ -9,8 +10,6 @@ import com.example.uasts.model.postrumour.PostRumour;
 import com.example.uasts.model.register.Register;
 import com.example.uasts.model.rumourfile.RumourFile;
 import com.example.uasts.model.transferfile.TransferFile;
-
-import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -84,5 +83,19 @@ public interface ApiInterface {
 
     );
 
+    @Multipart
+    @POST("updaterumour.php")
+    Call<RumourUpdate> updateRumour(
+            @Part("player_name") RequestBody playername,
+            @Part MultipartBody.Part playerphoto,
+            @Part("player_position") RequestBody playerposition,
+            @Part("club_name") RequestBody clubname,
+            @Part MultipartBody.Part clubphoto,
+            @Part("rumour_price") RequestBody price,
+            @Part MultipartBody.Part fromclub,
+            @Part("fromclubname") RequestBody fromclubname,
+            @Part("description") RequestBody description,
+            @Part("rumour_id") RequestBody rumourId
 
+    );
 }

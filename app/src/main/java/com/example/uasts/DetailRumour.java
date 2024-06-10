@@ -34,21 +34,23 @@ public class DetailRumour extends AppCompatActivity {
         String playerPosition = temporaryRumour.getPlayerPosition();
         String description = temporaryRumour.getDescription();
         String transferPrice = temporaryRumour.getPlayerPrice();
-        String fromClubPlayer = temporaryRumour.getFromClub();
+        String fromClubPlayer = temporaryRumour.getRumourclubPhoto();
         String fromClubName = temporaryRumour.getFromclubname();
+        String rumourClubName = temporaryRumour.getRumourclubName();
 
         tvpemainDetail.setText(playerName);
         tvPosition.setText(playerPosition);
         tvPrice.setText(transferPrice);
-        String filledDescription = replaceHolder(description, playerName, fromClubName, transferPrice);
+        String filledDescription = replaceHolder(description, playerName, fromClubName, rumourClubName, transferPrice);
         tvDeskripsi.setText(filledDescription);
         Glide.with(this).load(playerPhoto).into(ivDetail);
         Glide.with(this).load(fromClubPlayer).into(ivfromClub);
     }
 
-    private String replaceHolder(String template, String playerName, String fromClubName, String price) {
+    private String replaceHolder(String template, String playerName, String fromClubName, String rumourClubName, String price) {
         return template.replace("[Player Name]", playerName)
-                .replace("[New Club Name]", fromClubName)
-                .replace("[Transfer Fee]", price);
+                .replace("[New Club Name]", rumourClubName)
+                .replace("[Transfer Fee]", price)
+                .replace("[Current Club Name]", fromClubName);
     }
 }

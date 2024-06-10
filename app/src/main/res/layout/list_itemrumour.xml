@@ -49,12 +49,12 @@
         android:textAlignment="center"
         android:fontFamily="@font/firasans"
         android:layout_marginTop="71dp"
-        android:layout_marginLeft="255dp"
+        android:layout_marginRight="15dp"
+        android:layout_gravity="end"
         android:layout_width="100dp"
         android:layout_height="35dp"/>
 
     <TextView
-
         android:id="@+id/tvstatusPemain"
         android:textStyle="italic"
         android:textSize="20dp"
@@ -75,10 +75,11 @@
 
     <ImageView
         android:id="@+id/ivClub"
+        android:layout_gravity="end"
         android:layout_width="75dp"
         android:layout_height="65dp"
         android:layout_marginTop="2dp"
-        android:layout_marginLeft="268dp" />
+        android:layout_marginRight="28dp" />
 
     <ImageButton
         android:id="@+id/ibDelete"

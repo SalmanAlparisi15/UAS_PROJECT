@@ -15,13 +15,14 @@ public class TemporaryRumour {
     private static final String DESCRIPTION = "description";
     private static final String FROMCLUBNAME = "fromclubname";
     private static final String RUMOURCLUB_NAME = "rumourclub_name";
+    private static final String RUMOURCLUB_PHOTO = "club_photo";
 
     public TemporaryRumour(Context context) {
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = sharedPreferences.edit();
     }
 
-    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String fromClub, String description, String fromclubname) {
+    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String fromClub, String description, String fromclubname, String rumourclubName, String rumourclubPhoto) {
         editor.putString(PLAYER_NAME, playerName);
         editor.putString(PLAYER_PHOTO, playerPhoto);
         editor.putString(PLAYER_POSITION, playerPosition);
@@ -29,6 +30,9 @@ public class TemporaryRumour {
         editor.putString(FROM_CLUB, fromClub);
         editor.putString(DESCRIPTION, description);
         editor.putString(FROMCLUBNAME, fromclubname);
+        editor.putString(RUMOURCLUB_NAME, rumourclubName);
+        editor.putString(RUMOURCLUB_PHOTO, rumourclubPhoto);
+
         editor.apply();
     }
 
@@ -58,5 +62,11 @@ public class TemporaryRumour {
 
     public String getFromclubname() {
         return sharedPreferences.getString(FROMCLUBNAME, "");
+    }
+    public String getRumourclubName(){
+        return sharedPreferences.getString(RUMOURCLUB_NAME, "");
+    }
+    public String getRumourclubPhoto(){
+        return sharedPreferences.getString(RUMOURCLUB_PHOTO, "");
     }
 }
