@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.uasts.api.ApiClient;
 import com.example.uasts.api.ApiInterface;
-import com.example.uasts.model.posttransfer.PostTransfer;
+import com.example.uasts.model.updatetransfer.UpdateTransfer;
+import com.example.uasts.others.temporary.TemporaryTransfer;
 
 import java.io.File;
 
@@ -30,17 +32,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CreateTransfer extends AppCompatActivity {
+public class TransferUpdate extends AppCompatActivity {
+
     EditText etNama, etClub, etPrice, etfromClub;
     ImageButton ibPlayer, ibtoClub;
     Spinner spDescription, etPosisi;
     ImageView ivDone;
     Uri playerPhotoUri, toClubPhotoUri;
+    TemporaryTransfer temporaryTransfer;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_createtransfer);
+        setContentView(R.layout.activity_updatetransfer);
 
         etNama = findViewById(R.id.etNama);
         etClub = findViewById(R.id.ettoClub);
@@ -51,6 +56,8 @@ public class CreateTransfer extends AppCompatActivity {
         ibtoClub = findViewById(R.id.ibtoClub);
         ivDone = findViewById(R.id.ivDone);
         spDescription = findViewById(R.id.spDescription);
+
+        temporaryTransfer = new TemporaryTransfer(this);
 
         ArrayAdapter<CharSequence> positionAdapter = ArrayAdapter.createFromResource(this,
                 R.array.positions_array, android.R.layout.simple_spinner_item);
@@ -72,26 +79,11 @@ public class CreateTransfer extends AppCompatActivity {
             }
         });
 
-        ibPlayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage(1);
-            }
-        });
+        id = temporaryTransfer.getTransferId();
+        ibPlayer.setOnClickListener(v -> selectImage(1));
+        ibtoClub.setOnClickListener(v -> selectImage(2));
 
-        ibtoClub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectImage(2);
-            }
-        });
-
-        ivDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitTransfer();
-            }
-        });
+        ivDone.setOnClickListener(v -> submitRumour());
     }
 
     private void selectImage(int requestCode) {
@@ -104,6 +96,7 @@ public class CreateTransfer extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri selectedImageUri = data.getData();
+            Log.d("TransferUpdate", "Selected image URI: " + selectedImageUri.toString());
             if (requestCode == 1) {
                 playerPhotoUri = selectedImageUri;
             } else if (requestCode == 2) {
@@ -112,15 +105,16 @@ public class CreateTransfer extends AppCompatActivity {
         }
     }
 
-    private void submitTransfer() {
+    private void submitRumour() {
+
         String playerName = etNama.getText().toString();
         String clubName = etClub.getText().toString();
         String position = etPosisi.getSelectedItem().toString();
-        String transferPrice = etPrice.getText().toString();
-        String fromClubName = etfromClub.getText().toString();
+        String price = etPrice.getText().toString();
+        String fromclubname = etfromClub.getText().toString();
         String description = spDescription.getSelectedItem().toString();
 
-        if (playerName.isEmpty() || clubName.isEmpty() || position.isEmpty() || transferPrice.isEmpty() || fromClubName.isEmpty() || description.isEmpty() || playerPhotoUri == null || toClubPhotoUri == null) {
+        if (playerName.isEmpty() || clubName.isEmpty() || position.isEmpty() || price.isEmpty() || fromclubname.isEmpty() || description.isEmpty() || playerPhotoUri == null || toClubPhotoUri == null) {
             Toast.makeText(this, "Please fill all the fields and select all images", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -128,30 +122,31 @@ public class CreateTransfer extends AppCompatActivity {
         RequestBody playerNameBody = RequestBody.create(MediaType.parse("text/plain"), playerName);
         RequestBody clubNameBody = RequestBody.create(MediaType.parse("text/plain"), clubName);
         RequestBody positionBody = RequestBody.create(MediaType.parse("text/plain"), position);
-        RequestBody transferPriceBody = RequestBody.create(MediaType.parse("text/plain"), transferPrice);
-        RequestBody fromClubNameBody = RequestBody.create(MediaType.parse("text/plain"), fromClubName);
+        RequestBody priceBody = RequestBody.create(MediaType.parse("text/plain"), price);
+        RequestBody fromclubNameBody = RequestBody.create(MediaType.parse("text/plain"), fromclubname);
         RequestBody descriptionBody = RequestBody.create(MediaType.parse("text/plain"), description);
+        RequestBody transferIdBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
 
         MultipartBody.Part playerPhotoPart = prepareFilePart("player_photo", playerPhotoUri);
         MultipartBody.Part toClubPhotoPart = prepareFilePart("club_photo", toClubPhotoUri);
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<PostTransfer> call = apiInterface.postTransfer(playerNameBody, playerPhotoPart, positionBody, clubNameBody, toClubPhotoPart, transferPriceBody, fromClubNameBody, descriptionBody);
-
-        call.enqueue(new Callback<PostTransfer>() {
+        Call<UpdateTransfer> call = apiInterface.updateTransfer(playerNameBody, playerPhotoPart, positionBody, clubNameBody, toClubPhotoPart, priceBody, fromclubNameBody, descriptionBody, transferIdBody);
+        call.enqueue(new Callback<UpdateTransfer>() {
             @Override
-            public void onResponse(Call<PostTransfer> call, Response<PostTransfer> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(CreateTransfer.this, "Transfer posted successfully!", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<UpdateTransfer> call, Response<UpdateTransfer> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    Log.d("TransferUpdate", "Transfer updated successfully!");
                     finish();
                 } else {
-                    Toast.makeText(CreateTransfer.this, "Failed to post transfer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransferUpdate.this, "Failed to update transfer", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<PostTransfer> call, Throwable t) {
-                Toast.makeText(CreateTransfer.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<UpdateTransfer> call, Throwable t) {
+                Log.e("TransferUpdate", "Failed to update transfer: " + t.getMessage());
+                Toast.makeText(TransferUpdate.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

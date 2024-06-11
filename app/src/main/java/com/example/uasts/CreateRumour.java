@@ -161,6 +161,7 @@ public class CreateRumour extends AppCompatActivity {
             public void onResponse(Call<PostRumour> call, Response<PostRumour> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(CreateRumour.this, "Rumour posted successfully!", Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(CreateRumour.this, "Failed to post rumour", Toast.LENGTH_SHORT).show();
                 }

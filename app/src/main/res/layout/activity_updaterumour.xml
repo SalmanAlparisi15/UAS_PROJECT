@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/createdetail"
+    android:paddingBottom="50dp"
     tools:context=".RumourUpdate">
     <ScrollView
         app:layout_constraintStart_toStartOf="parent"

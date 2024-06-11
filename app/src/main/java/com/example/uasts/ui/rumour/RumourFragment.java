@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,7 @@ public class RumourFragment extends Fragment {
     private RumourAdapter rumourAdapter;
     private SessionManager sessionManager;
     private ImageView ibCreate;
+    private CardView cvfragmentRumour;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -48,6 +50,11 @@ public class RumourFragment extends Fragment {
 
         sessionManager = new SessionManager(getContext());
         ibCreate = binding.ibCreate;
+        cvfragmentRumour = binding.cvfragmentRumour;
+
+        if (!sessionManager.isAdmin()){
+            cvfragmentRumour.setVisibility(View.GONE);
+        }
 
         if (!sessionManager.isAdmin()) {
             ibCreate.setVisibility(View.GONE);

@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 public class TemporaryRumour {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private static final String RUMOUR_ID = "rumourId";
     private static final String PLAYER_NAME = "player_name";
     private static final String PLAYER_PHOTO = "player_photo";
     private static final String PLAYER_POSITION = "player_position";
@@ -22,7 +23,7 @@ public class TemporaryRumour {
         editor = sharedPreferences.edit();
     }
 
-    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String fromClub, String description, String fromclubname, String rumourclubName, String rumourclubPhoto) {
+    public void setRumourData(String playerName, String playerPhoto, String playerPosition, String playerPrice, String fromClub, String description, String fromclubname, String rumourclubName, String rumourclubPhoto, int rumourId) {
         editor.putString(PLAYER_NAME, playerName);
         editor.putString(PLAYER_PHOTO, playerPhoto);
         editor.putString(PLAYER_POSITION, playerPosition);
@@ -32,7 +33,7 @@ public class TemporaryRumour {
         editor.putString(FROMCLUBNAME, fromclubname);
         editor.putString(RUMOURCLUB_NAME, rumourclubName);
         editor.putString(RUMOURCLUB_PHOTO, rumourclubPhoto);
-
+        editor.putInt(RUMOUR_ID, rumourId);
         editor.apply();
     }
 
@@ -52,10 +53,6 @@ public class TemporaryRumour {
         return sharedPreferences.getString(PLAYER_PRICE, "");
     }
 
-    public String getFromClub() {
-        return sharedPreferences.getString(FROM_CLUB, "");
-    }
-
     public String getDescription() {
         return sharedPreferences.getString(DESCRIPTION, "");
     }
@@ -68,5 +65,8 @@ public class TemporaryRumour {
     }
     public String getRumourclubPhoto(){
         return sharedPreferences.getString(RUMOURCLUB_PHOTO, "");
+    }
+    public int getRumourId(){
+        return sharedPreferences.getInt(RUMOUR_ID, -1);
     }
 }

@@ -70,9 +70,9 @@ public class RumourAdapter extends RecyclerView.Adapter<RumourAdapter.ViewHolder
                     rumour.getDescription(),
                     rumour.getFromclubname(),
                     rumour.getRumourclubName(),
-                    rumour.getRumourclubPhoto()
+                    rumour.getRumourclubPhoto(),
+                    rumour.getId()
             );
-            intent.putExtra("rumour_id", rumour.getId());
             context.startActivity(intent);
         });
 

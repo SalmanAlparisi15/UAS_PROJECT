@@ -29,5 +29,11 @@
         <item>The transfer rumor mill goes into overdrive as reports emerge of [New Club Name] intensifying their pursuit of [Player Name] from [Current Club Name]. While details remain sketchy, whispers in the wind suggest a potential transfer fee close to € [Transfer Fee]m. Will these whispers culminate in a significant transfer deal? Stay tuned for more updates! #TransferRumor #StayUpdated</item>
     </string-array>
 
+    <string-array name="description_transfer">
+        <item> Breaking news rocks the footballing world as [Player Name] officially completes his much-anticipated move to [New Club Name] from [Before Club Name]. The transfer fee is reported to be a whopping €[Transfer Fee]m. A new chapter begins! #TransferNews #Welcome [Player Name]</item>
+        <item> The ink is dry! [Player Name] puts pen to paper and finalizes his transfer to [New Club Name] in a deal reported to be worth €[Transfer Fee]m. Fans eagerly await his impact on the pitch! #TransferComplete #GoodLuck [Player Name]</item>
+        <item> The wait is over! [New Club Name] formally announces the acquisition of [Player Name] from [Before Club Name] for a significant transfer fee of €[Transfer Fee]m. An exciting addition to the squad! #TransferAnnouncement #Welcome [Player Name]</item>
+        <item> Transfer negotiations culminate in success as [New Club Name] secures the signature of [Player Name] from [Before Club Name] for a reported transfer fee of €[Transfer Fee]m. The stage is set for a thrilling chapter! #TransferDeal #FootballNews</item>
+    </string-array>
 
 </resources>

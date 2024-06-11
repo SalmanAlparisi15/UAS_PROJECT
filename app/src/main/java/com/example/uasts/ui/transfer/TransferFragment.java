@@ -1,16 +1,22 @@
 package com.example.uasts.ui.transfer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.uasts.CreateRumour;
+import com.example.uasts.CreateTransfer;
+import com.example.uasts.SessionManager;
 import com.example.uasts.others.adapter.TransferAdapter;
 import com.example.uasts.api.ApiClient;
 import com.example.uasts.api.ApiInterface;
@@ -29,6 +35,9 @@ public class TransferFragment extends Fragment {
     private FragmentTransferBinding binding;
     private RecyclerView recyclerView;
     private TransferAdapter transferAdapter;
+    private SessionManager sessionManager;
+    private ImageView ivCreate;
+    private CardView cvfragmentTransfer;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +46,28 @@ public class TransferFragment extends Fragment {
 
         recyclerView = binding.rvTransfer;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        sessionManager = new SessionManager(getContext());
+        ivCreate = binding.ivCreate;
+        cvfragmentTransfer = binding.cvfragmentTransfer;
+
+        if (!sessionManager.isAdmin()){
+            cvfragmentTransfer.setVisibility(View.GONE);
+        }
+
+        if (!sessionManager.isAdmin()) {
+            ivCreate.setVisibility(View.GONE);
+
+        } else {
+            ivCreate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), CreateTransfer.class);
+                    startActivity(intent);
+                }
+            });
+
+        }
 
         fetchTransfers();
 

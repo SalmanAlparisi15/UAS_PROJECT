@@ -1,7 +1,8 @@
 package com.example.uasts.api;
 
 
-import com.example.uasts.RumourUpdate;
+import com.example.uasts.model.posttransfer.PostTransfer;
+import com.example.uasts.model.updaterumour.UpdateRumour;
 import com.example.uasts.model.delete.Delete;
 import com.example.uasts.model.deleterumour.DeleteRumour;
 import com.example.uasts.model.login.Login;
@@ -10,6 +11,7 @@ import com.example.uasts.model.postrumour.PostRumour;
 import com.example.uasts.model.register.Register;
 import com.example.uasts.model.rumourfile.RumourFile;
 import com.example.uasts.model.transferfile.TransferFile;
+import com.example.uasts.model.updatetransfer.UpdateTransfer;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -85,7 +87,7 @@ public interface ApiInterface {
 
     @Multipart
     @POST("updaterumour.php")
-    Call<RumourUpdate> updateRumour(
+    Call<UpdateRumour> updateRumour(
             @Part("player_name") RequestBody playername,
             @Part MultipartBody.Part playerphoto,
             @Part("player_position") RequestBody playerposition,
@@ -96,6 +98,34 @@ public interface ApiInterface {
             @Part("fromclubname") RequestBody fromclubname,
             @Part("description") RequestBody description,
             @Part("rumour_id") RequestBody rumourId
+
+    );
+
+    @Multipart
+    @POST("posttransfer.php")
+    Call<PostTransfer> postTransfer(
+            @Part("player_name") RequestBody playername,
+            @Part MultipartBody.Part playerphoto,
+            @Part("player_positions") RequestBody playerpositions,
+            @Part("club_name") RequestBody clubname,
+            @Part MultipartBody.Part clubphoto,
+            @Part("transfer_price") RequestBody transferprice,
+            @Part("fromclubtransfer") RequestBody fromclubtransfer,
+            @Part("transfer_description") RequestBody transferdescription
+    );
+
+    @Multipart
+    @POST("updatetransfer.php")
+    Call<UpdateTransfer> updateTransfer(
+            @Part("player_name") RequestBody playername,
+            @Part MultipartBody.Part playerphoto,
+            @Part("player_positions") RequestBody playerpositions,
+            @Part("club_name") RequestBody clubname,
+            @Part MultipartBody.Part clubphoto,
+            @Part("transfer_price") RequestBody price,
+            @Part("fromclubtransfer") RequestBody fromclubname,
+            @Part("transfer_description") RequestBody description,
+            @Part("transfer_id") RequestBody transferId
 
     );
 }

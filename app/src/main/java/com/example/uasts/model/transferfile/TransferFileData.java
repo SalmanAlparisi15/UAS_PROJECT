@@ -16,6 +16,9 @@ public class TransferFileData {
 	@SerializedName("player_positions")
 	private String playerPositions;
 
+	@SerializedName("fromclubtransfer")
+	private String fromclubtransfer;
+
 	@SerializedName("id")
 	private int id;
 
@@ -24,6 +27,9 @@ public class TransferFileData {
 
 	@SerializedName("club_name")
 	private String clubName;
+
+	@SerializedName("transfer_description")
+	private String transferDescription;
 
 	public void setPlayerPhoto(String playerPhoto){
 		this.playerPhoto = playerPhoto;
@@ -57,6 +63,14 @@ public class TransferFileData {
 		return playerPositions;
 	}
 
+	public void setFromclubtransfer(String fromclubtransfer){
+		this.fromclubtransfer = fromclubtransfer;
+	}
+
+	public String getFromclubtransfer(){
+		return fromclubtransfer;
+	}
+
 	public void setId(int id){
 		this.id = id;
 	}
@@ -79,5 +93,13 @@ public class TransferFileData {
 
 	public String getClubName(){
 		return clubName;
+	}
+
+	public void setTransferDescription(String transferDescription){
+		this.transferDescription = transferDescription;
+	}
+
+	public String getTransferDescription(){
+		return transferDescription;
 	}
 }
