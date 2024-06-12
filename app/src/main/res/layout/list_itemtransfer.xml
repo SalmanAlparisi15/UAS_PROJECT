@@ -85,7 +85,6 @@
         app:shapeAppearanceOverlay="@style/circual"
         app:strokeWidth="2dp"
         app:strokeColor="@color/black"
-        android:scaleType="fitCenter"
         android:layout_width="75dp"
         android:layout_height="65dp"
         android:layout_marginTop="2dp"
@@ -93,6 +92,9 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivClubT"
+        app:shapeAppearanceOverlay="@style/circual"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/black"
         android:layout_width="75dp"
         android:layout_height="65dp"
         android:layout_marginTop="2dp"

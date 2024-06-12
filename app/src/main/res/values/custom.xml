@@ -2,7 +2,7 @@
 <resources>
     <style name="circual">
         <item name="cornerSize">
-            45%
+            40%
         </item>
     </style>
 </resources>
