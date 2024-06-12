@@ -23,6 +23,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:cardCornerRadius="38dp"
+        android:backgroundTint="@color/white"
         android:layout_gravity="bottom|end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +36,7 @@
         android:layout_gravity="center"
         android:src="@drawable/baseline_add_24"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="43dp"/>
 
     </androidx.cardview.widget.CardView>
 

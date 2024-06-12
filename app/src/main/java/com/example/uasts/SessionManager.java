@@ -21,6 +21,7 @@ public class SessionManager {
     public static final String NAME = "name";
     public static final String IS_ADMIN = "is_admin";
     public static final String USERNAME = "username";
+    public static final String PROFILE_IMAGE = "profile_image";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -36,6 +37,10 @@ public class SessionManager {
         editor.putString(USERNAME, user.getUsername());
         editor.commit();
     }
+    public void saveProfileImage(String profileImageUri) {
+        editor.putString(PROFILE_IMAGE, profileImageUri);
+        editor.commit();
+    }
 
     public HashMap<String, String> getUserDetail() {
         HashMap<String, String> user = new HashMap<>();
@@ -43,6 +48,7 @@ public class SessionManager {
         user.put(NAME, sharedPreferences.getString(NAME, null));
         user.put(USERNAME, sharedPreferences.getString(USERNAME, null));
         user.put(IS_ADMIN, String.valueOf(sharedPreferences.getBoolean(IS_ADMIN, false)));
+        user.put(PROFILE_IMAGE, sharedPreferences.getString(PROFILE_IMAGE, null));
         return user;
     }
 

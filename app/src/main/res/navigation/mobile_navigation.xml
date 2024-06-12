@@ -24,11 +24,6 @@
         android:label="@string/title_rumour"
         tools:layout="@layout/fragment_rumour" />
 
-    <fragment
-        android:id="@+id/navigation_standing"
-        android:name="com.example.uasts.ui.standing.StandingFragment"
-        android:label="@string/title_standings"
-        tools:layout="@layout/fragment_standing" />
 
     <fragment
         android:id="@+id/navigation_profil"

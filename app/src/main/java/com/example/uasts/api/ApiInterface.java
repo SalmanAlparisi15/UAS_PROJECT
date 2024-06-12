@@ -13,6 +13,8 @@ import com.example.uasts.model.rumourfile.RumourFile;
 import com.example.uasts.model.transferfile.TransferFile;
 import com.example.uasts.model.updatetransfer.UpdateTransfer;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;

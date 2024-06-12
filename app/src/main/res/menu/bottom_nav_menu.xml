@@ -17,11 +17,6 @@
         android:title="@string/title_rumour" />
 
     <item
-        android:id="@+id/navigation_standing"
-        android:icon="@drawable/baseline_leaderboard_24"
-        android:title="@string/title_standings" />
-
-    <item
         android:id="@+id/navigation_profil"
         android:icon="@drawable/baseline_person_24"
         android:title="@string/title_profil" />
